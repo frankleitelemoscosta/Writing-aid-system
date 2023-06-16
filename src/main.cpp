@@ -1,6 +1,7 @@
 #include<iostream>
 #include"File.hpp"
 #include"Hashtable.hpp"
+#include"Convertion.hpp"
 
 using namespace std;
 
@@ -13,10 +14,12 @@ int main()
 //extract informations of the input file
     OpenFile(Text,&Size);
 
-//to convert letters for use whit key of the hash table
-    ConvertLetters(Text);
-
     Initialize(&h,Size);
+
+    Imprime(&h);
+
+//to convert letters for use whit key of the hash table
+    ConvertLetters(Text,&h);
 
     Imprime(&h);
 

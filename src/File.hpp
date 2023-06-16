@@ -4,7 +4,6 @@
 
 using namespace std;
 
-void ConvertLetters(char Text[100]);
 void OpenFile(char *Text,int *Size);
 void ReadFile(FILE **File,int *Size,char *Text);
 

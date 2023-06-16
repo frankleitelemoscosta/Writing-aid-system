@@ -3,6 +3,10 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<string>
+#include<iostream>
+
+using namespace std;
 
 #define HASH(v, M) (v % M)
 
@@ -11,8 +15,8 @@ typedef struct HashTable HashTable;
 
 
 struct DataTable{
-	int key;
-	int value;
+	long long int key;
+	string value;
 };
 
 
@@ -24,7 +28,7 @@ struct HashTable{
 
 void Initialize(HashTable *h, int M);
 void Imprime(HashTable *h);
-int getValue(HashTable *h, int key);
-void Insert(HashTable *h, int key, int value);
+string getValue(HashTable *h, int key);
+void Insert(HashTable *h, long long int key, string value);
 
 #endif

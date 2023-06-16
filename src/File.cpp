@@ -5,38 +5,6 @@
 
 using namespace std;
 
-void ConvertLetters(char Text[100]){
-
-    char AID[100];
-    int Counter = 0;
-    int Counter_Aux = 0;
-    int Number;
-    char NumberAux[10];
-    char result[10];
-
-    while(Text[Counter] != '*')
-    {
-        if(Text[Counter] == ' ' || Text[Counter] == '.')
-        {
-            for(int i = 0 ; i < Counter_Aux ; i++)
-            {
-                Number = int(AID[i]);
-                sprintf(NumberAux, "%d" ,Number);
-                strcat(result,NumberAux);
-            }
-            
-            Counter_Aux = 0;
-            Counter++;
-        }
-
-        AID[Counter_Aux] = Text[Counter]; 
-        Counter_Aux++;
-        Counter++;
-    }
-
-}
-
-
 void ReadFile(FILE **File,int *Size,char *Text)
 {
 
