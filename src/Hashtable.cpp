@@ -38,9 +38,9 @@ string getValue(HashTable *h, int key){
 	return h->table[idx].value;
 }
 
-void Insert(HashTable *h, long long int key, string value){
+void Insert(HashTable *h, unsigned long long int key, string value){
     
-	int idx = HASH(key, h->M);
+	unsigned long long int idx = HASH(key, h->M);
 	int aux = idx;
 	
 	while (h->table[idx].key != -1){

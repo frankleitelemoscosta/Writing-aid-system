@@ -15,7 +15,7 @@ typedef struct HashTable HashTable;
 
 
 struct DataTable{
-	long long int key;
+	unsigned long long int key;
 	string value;
 };
 
@@ -29,6 +29,6 @@ struct HashTable{
 void Initialize(HashTable *h, int M);
 void Imprime(HashTable *h);
 string getValue(HashTable *h, int key);
-void Insert(HashTable *h, long long int key, string value);
+void Insert(HashTable *h, unsigned long long int key, string value);
 
 #endif

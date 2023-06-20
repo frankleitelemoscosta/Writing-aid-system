@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cstring>
+#include<stdint.h>
 #include"Convertion.hpp"
 #include"Hashtable.hpp"
 
@@ -7,14 +8,14 @@ using namespace std;
 
 void ConvertLetters(char Text[100],HashTable *h){
 
-    char *AID;
+    string AID;
     int Counter = 0;
     int Counter_Aux = 0;
-    long long int Number;
-    char NumberAux[10];
-    char *result;
+    unsigned long long int Number;
+    string NumberAux;
+    string result;
+    string resultado;
 
-    AID = (char *)malloc(100*sizeof(char));
 
     while(Text[Counter] != '*')
     {
@@ -23,33 +24,34 @@ void ConvertLetters(char Text[100],HashTable *h){
             for(int i = 0 ; i < Counter_Aux ; i++)
             {
                 Number = int(AID[i]);// a conversão funciona corretamente
-                printf("Letter(%d):[%lld]\n",i,Number);
-                sprintf(NumberAux, "%lld" ,Number);
-                cout<<"Número auxiliar"<<i<<": "<< NumberAux<<endl;
-                strcat(result,NumberAux);
+                NumberAux = to_string(Number);
+                result = result + NumberAux;
             }
-            
-            cout << result <<endl;
 
-            Number = stol(result);
+            NumberAux.clear();
 
-            free(result);
+            resultado = result;
+
+            cout<< result<<endl;
+            cout<<resultado<<endl;
+
+            Number = stoull(resultado);
+
+            resultado.clear();
+            result.clear();
 
             //in here, i pass to function insert hash the key and the word
 
             Insert(h,Number,AID);
 
-            free(AID);
-            AID = (char *)malloc(100*sizeof(char));
+            AID.clear();
 
             Counter_Aux = 0;
             Counter++;
         }
 
-        result = (char *)malloc(50*sizeof(char));
 
-
-        AID[Counter_Aux] = Text[Counter]; 
+        AID += Text[Counter];        
         Counter_Aux++;
         Counter++;
     }

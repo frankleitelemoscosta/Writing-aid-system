@@ -9,7 +9,7 @@ int main()
 {
     HashTable h;
     int Size = 0;
-    char Text[100];
+    char Text[1000];
 
 //extract informations of the input file
     OpenFile(Text,&Size);
