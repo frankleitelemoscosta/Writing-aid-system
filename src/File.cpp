@@ -1,4 +1,3 @@
-#include"Hashtable.hpp"
 #include"File.hpp"
 #include<string>
 #include<string.h>
@@ -11,11 +10,6 @@ void ReadFile(FILE **File,int *Size,char *Text)
     int Counter = 0;
     int Counter_aux = 0;
 
-//initialize the vet
-    for(int i = 0; i < 100; i++)
-    {
-        Text[i] = '*';
-    }
 
 //extract the data of the file
     while(!feof(*File)){
@@ -23,8 +17,10 @@ void ReadFile(FILE **File,int *Size,char *Text)
         Counter++;
     }
 
+    Text[Counter] = '\0';
+
 //extract the quantiti of words that exist in the input file
-    while(Text[Counter_aux] != '*')
+    while(Text[Counter_aux] != '\0')
     {
         if(Text[Counter_aux] == ' ' || Text[Counter_aux] == '.')
         {
