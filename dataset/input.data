@@ -1,4 +1,22 @@
-Frank Leite Lemos Costa fdsdas vddfasd fddsa fdasfd fddfas.
-Frank Leite Lemos Costa.
-Frank Leite Lemos Costa.
-Fim.
+Ao elaborar artigos científicos, uma escrita clara e uma estrutura adequada pode melhorar as chances de se publica-lo em congressos de maior abrangência e melhor
+qualificação. Para tanto, atentar-se a detalhes, tais como, repetição de palavras, expressões, numero de sentenças e quantidade de linhas por parágrafo pode 
+ser um bom início para alcançar essa melhoria. Sabendo-se disso, o professor Dr Antônio Alfredo Ferreira Loreiro, em sua disciplina de projeto e análise de algoritmos,
+propôs como trabalho a utilização dos conceitos de estruturas de dados para a criação de uma solução que pudesse vir a auxiliar a correção de artigos científicos 
+sem formatação e escritos no padrão ASCII. Visto que, a solução apresentada deveria utilizar uma forma de busca de palavras para a identificação de stop words 
+e expressões, uma forma de indexação poderia vir a apresentar melhores resultados do que estruturas de busca sequêncial e não ordenadas. Observando várias estruturas
+definidas em literatura,  a árvore patricia e o tipo map foram escolhidos para compor a base do algoritmo desenvolvido.
+
+A árvore patricia é uma estrutura de dados da família das árvores digitais que faz uso de chaves, tais como, sequência de caracteres ou dígitos para a indexação
+de palavras. Comparada, grosso modo, com os índices de dedo encontrados em dicionários convencionais, essa estrutura prove vantagens quando as chaves utilizadas
+são caracterizadas por serem variáveis e de tamanho semi-infinito. Pensando nisso, para este trabalho, foram criadas chaves de 128 bits obtidas enviando-se uma
+palavra ao método GetBinaryKey, o qual, prove seu retorno para dois dos principais métodos da estrutura: o Insert e o LookUp.
+
+O Insert faz uso da chave para identificar e/ou criar um nó na estrutura. Esse, por sua vez, é definido pelo tipo PatriciaTreeNode  e é utilizado para armazenar
+informações da chave, do dado, do número de repetições, das linhas e parágrafos de ocorrência de cada palavra.  Sabendo-se que um dos possíveis gargalos 
+poderia ser a avaliação da chave, métodos de apoio, como,  bit_first_different, key_compare e get_bit foram implementados. Objetivou-se com isso definir uma
+forma de manipulação binária que retornasse resultados em um tempo constante. Como pode ser observado no código apresentado junto a este documento isso foi obtido
+pela utilização de recursos de deslocamento de bits providos pela própria linguagem C/C++. Um segundo método que se beneficiou deste processo foi a busca de nós ou LookUp.
+
+O  LookUp é o método utilizado pela árvore para buscar um dado nó a partir de uma chave binária qualquer. Se o resultado for positivo e um nó for encontrado,
+este é retornado para o usuário. Caso contrário, é enviado como resposta um retorno vazio NULL para identificar a não localização da palavra pesquisada.Esse, entre
+outros métodos providos pela solução aqui apresentada podem ser observados no diagrama UML da Figura 1.
