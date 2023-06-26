@@ -31,6 +31,7 @@ int main()
     switch(*ch) {
       case L'.': case L'!': case L'?':
         if(!word.empty()) {
+          //counter words for register the quantiti
           ++count.words;
           if(stop_words.isStopWord(word)) {
             ++count.stop_words;

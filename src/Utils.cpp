@@ -73,6 +73,7 @@ std::wofstream createOutput(const std::locale &loc)
 
   output.imbue(loc);
 
+  //return the file output opened
   return output;
 }
 

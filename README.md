@@ -124,4 +124,10 @@ Este projeto contem um arquivo com um conjunto de diretivas de compilação que 
     <i>Para a execução do programa utilize <u>make</u> para realizar a compilação e logo após utilize <u>make run</u> para executar o programa</i>
 </p>
 
+## Referências
+
 ## Autores
+
+<p style = "text-align = justify">
+Frank Leite Lemos Costa, Leandro Sousa Costa, João Pedro Freitas alunos de Engenharia da Computação no <a href = "https://www.cefetmg.br/">CEFET</a>, 3° período.
+</p>
