@@ -39,7 +39,8 @@ sua ocorrência e a distância entre elas incluindo as stop words?
 linha no arquivo fonte onde aparece?
 
 <p style = "text-align = justify">
-
+A principio é necessário extrair os dados do arquivo de entrada e inseri-los na memória do computador para que se torne possível
+manipular tais dados com o propósito de conseguir as informações requiridas para auxiliar na correção de um texto 
 </p>
 
 ## Máquina de teste
