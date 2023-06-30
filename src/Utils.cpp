@@ -1,4 +1,6 @@
 #include "Utils.hpp"
+#include "TotalMap.hpp"
+#include "Expression.hpp"
 
 using namespace std;
 
@@ -76,6 +78,67 @@ std::wofstream createOutput(const std::locale &loc)
   //return the file output opened
   return output;
 }
+
+void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &output)
+{
+  wifstream txt("./dataset/expressoes.txt", ios::binary);
+
+
+  if(!txt.is_open()) exit(1);
+
+  txt.imbue(loc);
+
+  // Determine the size of the file in bytes
+  txt.seekg(0, ios::end);
+  streampos fileSize = txt.tellg();
+  txt.seekg(0, ios::beg);
+
+  // Allocate memory for the wchar_t buffer
+  wchar_t* buffer = new wchar_t[fileSize];
+
+  // Read the file contents into the buffer
+  txt.read(buffer, fileSize);
+
+  wstring word;
+  wstring prevWord;
+  bool sequence;
+  short int line, count = 0;
+
+  output << "EXPRESSIONS\t\t\t LINE \t\t\t APPERANCES\n";
+
+  while(*buffer)
+  {
+    while(*buffer != L'\n' && *buffer != EOF){
+      if(*buffer == L' ')
+    {
+      
+      sequence = CheckExpression(word,prevWord,tm);
+
+      prevWord = word;
+      word.clear();
+    }
+
+    word += *buffer;
+    buffer++;
+
+    cout << *buffer << endl;
+    wcout << word <<endl;
+
+  }
+
+  if(sequence == true){
+     output << line << "\t\t\t" << count << "\n";
+  }
+
+  line++;
+  count++;
+  buffer++;
+  }
+
+
+  txt.close();
+}
+
 
 void printParagraph(const std::vector<ParagraphInfo> paragraph,
     std::wofstream &output)

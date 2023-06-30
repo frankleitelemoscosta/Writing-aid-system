@@ -3,6 +3,7 @@
 #include "StopWords.hpp"
 #include "PartialMap.hpp"
 #include "TotalMap.hpp"
+#include "Expression.hpp"
 #include<vector>
 #include<iostream>
 
@@ -29,7 +30,9 @@ void Read()
 
   printStart(output);
 
+  //traversing the input data
   while (*ch) {
+    
     switch(*ch) {
 
       // first case, this case is when the ch arrived in sentence end
@@ -59,6 +62,7 @@ void Read()
         ++text.sentence;
         //cout << text.sentence << endl; // rascunho
         break;
+      //end the first case
 
       //second case
       case L'\n':
@@ -89,6 +93,7 @@ void Read()
         }
 
         break;
+      //end the second case
 
       //last case
       case L' ': case L',': case L':':
@@ -107,7 +112,9 @@ void Read()
 
         if(new_line) new_line = false;
         break;
+      //end last case
 
+      //the other cases catch the word and analise 
       default:
         word += tolower(*ch);
         break;
@@ -115,11 +122,15 @@ void Read()
     ++ch;
   }
 
+
   tmp_paragraph.sentences = text.sentence - 1;
   paragraph.push_back(tmp_paragraph);
 
   mp_total.print(output);
   printParagraph(paragraph, output);
+
+  //call a function that make the check the expression
+  ReadExpressionfile(loc,mp_total,output);
 
   output.close();
   delete[] txt;

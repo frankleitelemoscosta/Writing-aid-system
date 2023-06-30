@@ -1,4 +1,3 @@
-
 #include"Readtext.hpp"
 
 using namespace std;

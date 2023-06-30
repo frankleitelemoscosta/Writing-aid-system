@@ -40,7 +40,11 @@ linha no arquivo fonte onde aparece?
 
 <p style = "text-align = justify">
 A principio é necessário extrair os dados do arquivo de entrada e inseri-los na memória do computador para que se torne possível
-manipular tais dados com o propósito de conseguir as informações requiridas para auxiliar na correção de um texto 
+manipular tais dados com o propósito de conseguir as informações requiridas para auxiliar na correção de um texto, para tal foi utilizado o modo de leitura binário assim lendo caracter por caracter do arquivo de entrada, assim foi possível averiguar onde se esta no texto, se esta entre duas palavras ou no final da frase o que é essencial para a análise do texto. 
+</p>
+
+<p style = "text-align = justify"
+Assim para encontrar
 </p>
 
 ## Máquina de teste

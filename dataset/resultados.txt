@@ -627,3 +627,4 @@ Paragraph: 3	Begining in line: 14	Number of sentences: 6
 Paragraph: 4	Begining in line: 20	Number of sentences: 4
 _______________________________________________________________________________________________________________________________________
 
+EXPRESSIONS			 LINE 			 APPERANCES

@@ -7,7 +7,9 @@
 #include <locale>
 #include <map>
 #include <vector>
+#include <cstring>
 #include <unordered_set>
+#include "TotalMap.hpp"
 
 #define _ ios_base::sync_with_stdio(0);cin.tie(0);
 #define endl '\n'
@@ -33,5 +35,7 @@ wchar_t *getText(const std::locale &loc);
 std::wofstream createOutput(const std::locale &loc);
 void printParagraph(const std::vector<ParagraphInfo> paragraph,
     std::wofstream &output);
+
+void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &output);
 
 #endif /* __UTILS_HPP__ */
