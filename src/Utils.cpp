@@ -81,8 +81,13 @@ std::wofstream createOutput(const std::locale &loc)
 
 void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &output)
 {
-  wifstream txt("./dataset/expressoes.txt", ios::binary);
 
+  wstring word;
+  wstring prevWord;
+  bool sequence;
+  short int line, count = 0;
+
+  wifstream txt("./dataset/expressoes.txt", ios::binary);
 
   if(!txt.is_open()) exit(1);
 
@@ -99,12 +104,15 @@ void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &ou
   // Read the file contents into the buffer
   txt.read(buffer, fileSize);
 
+<<<<<<< HEAD
   wstring word;
   wstring prevWord;
   prevWord.clear();
   short int sequence;
   short int line = 0;
 
+=======
+>>>>>>> 96ba9c7 (Update)
   output << "EXPRESSIONS\t\t\t LINE \t\t\t APPERANCES\n";
 
   while(*buffer)
