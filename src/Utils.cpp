@@ -101,38 +101,41 @@ void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &ou
 
   wstring word;
   wstring prevWord;
-  bool sequence;
-  short int line, count = 0;
+  prevWord.clear();
+  short int sequence;
+  short int line = 0;
 
   output << "EXPRESSIONS\t\t\t LINE \t\t\t APPERANCES\n";
 
   while(*buffer)
   {
-    while(*buffer != L'\n' && *buffer != EOF){
-      if(*buffer == L' ')
-    {
-      
-      sequence = CheckExpression(word,prevWord,tm);
+    sequence = 0;
+    vector<Sentence> locations;
 
-      prevWord = word;
-      word.clear();
+    while(*buffer != L'\n' && *buffer != EOF){
+      if(*buffer == L' '){
+      
+        sequence = CheckExpression(word,prevWord,tm,locations);
+
+        prevWord = word;
+        word.clear();
+      }
+
+      word += *buffer;
+      buffer++;
+
+      //cout << *buffer << endl;
+      //wcout << word <<endl;
+
     }
 
-    word += *buffer;
+    if(sequence > 0 ){
+      output << line << "\t\t\t" << sequence << "\n";
+    }
+    locations.clear();
+
+    line++;
     buffer++;
-
-    cout << *buffer << endl;
-    wcout << word <<endl;
-
-  }
-
-  if(sequence == true){
-     output << line << "\t\t\t" << count << "\n";
-  }
-
-  line++;
-  count++;
-  buffer++;
   }
 
 
