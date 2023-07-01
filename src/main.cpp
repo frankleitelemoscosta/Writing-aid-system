@@ -7,9 +7,11 @@
 
 using namespace std;
 
+
 int main()
 {
-  clock_t start, end;
+  auto start = chrono::high_resolution_clock::now();
+
   setlocale(LC_ALL, "pt_BR.UTF-8");
   locale loc(locale(), new codecvt_utf8<wchar_t>);
 
@@ -31,8 +33,6 @@ int main()
 
   tmp_paragraph.number = 1;
   tmp_paragraph.beginAtLine = 1;
-
-  start = clock();
 
   readExpressions(expressions, loc);
   printStart(output);
@@ -143,9 +143,9 @@ int main()
   printParagraph(paragraph, output);
   printExpressions(expressions, output);
 
-  end = clock();
-  printf("Tempo de execução : %.3f ms\n",
-      ((double)(end - start))/CLOCKS_PER_SEC*1000);
+  auto stop = chrono::high_resolution_clock::now();
+  auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+  wcout << duration.count() << " microsegundos" << endl;
 
   output.close();
   delete[] txt;
