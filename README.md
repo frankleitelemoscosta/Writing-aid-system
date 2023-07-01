@@ -52,7 +52,7 @@ Todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" o
 </p>
 
 <p style = "text-align = justify">
-No que se refere as stop words, todas as palavras que foram sendo identificadas ao mesmo tempo se analisou se enquandrava no grupo das palavras que estavão no arquivo de entrada dentro do dataset que contem todas as stop words
+No que se refere as stop words, todas as palavras que foram sendo identificadas do arquivo de entrada ao mesmo tempo se analisou se enquandrava no grupo das palavras que estavão no arquivo de entrada dentro do dataset que contem todas as stop words
 </p>
 
 <p style = "text-align = justify">
@@ -134,7 +134,7 @@ Este projeto contem um arquivo com um conjunto de diretivas de compilação que 
     <i>As diretrizes de execução deste Make file são:<i>
     <table border="1">
       <tr><td><u>make clean</u></td> <td>Apaga a última compilação realizada contida na pasta objects</td></tr>
-      <tr><td><u>make</u></td> <td>Executa a compilação do programa utilizando o gcc, e o resultado vai para a pasta objects que esta dentro do repositório build.</td></tr>
+      <tr><td><u>make</u></td> <td>Executa a compilação do programa utilizando o g++, e o resultado vai para a pasta objects que esta dentro do repositório build.</td></tr>
       <tr><td><u>make run</u></td> <td>Executa o programa da pasta objects após o programa já estar compilado </td></tr>
     </table>
     <i>Para a execução do programa utilize <u>make</u> para realizar a compilação e logo após utilize <u>make run</u> para executar o programa</i>
