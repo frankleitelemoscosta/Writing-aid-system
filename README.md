@@ -24,14 +24,14 @@ Para construção de tal sistema foi necessário trazer alguns questionamentos e
 </p>
 
 1 - Para cada parágrafo do texto:
-* Como identificar o número da linha no arquivo fonte onde o parágrafo inicializa e termina?
-* O que fazer para identificar o número de sentenças existentes no parágrafo?
-* O que fazer para identificar o número de palavras de cada sentença incluindo e descartando as "stop words"?
+* Como identificar o número da linha no arquivo fonte onde o parágrafo inicializa e termina?.
+* O que fazer para identificar o número de sentenças existentes no parágrafo?.
+* O que fazer para identificar o número de palavras de cada sentença incluindo e descartando as "stop words"?.
 
 2 - Para cada palavra que não é stop word:
 
 * Como identificar cada palavra listada em ordem alfabética com a frequência de sua ocorrência no
-texto, indicando as linhas do arquivo onde essas surgem?
+texto, indicando as linhas do arquivo onde essas surgem?.
 * O que fazer caso uma palavra apareça mais de uma vez em um mesmo parágrafo, indicar a
 sua ocorrência e a distância entre elas incluindo as stop words?
 
@@ -44,7 +44,7 @@ manipular tais dados com o propósito de conseguir as informações requiridas p
 </p>
 
 <p style = "text-align = justify">
-Usando essa forma de extração de dados é possível determinar o final de cada linha dentro do arquivo, já que cada linha é terminada com um "/n" basta contar as linhas a partir de quando o ponteiro usado para percorrer cada caracter do arquivo de entrada estiver lendo o "\n".
+Usando essa forma de extração de dados é possível determinar o final de cada linha dentro do arquivo, já que cada linha é terminada com um "\n" basta contar as linhas a partir de quando o ponteiro usado para percorrer cada caracter do arquivo de entrada estiver lendo o "\n".
 </p>
 
 <p style = "text-align = justify">
@@ -52,10 +52,12 @@ Todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" o
 </p>
 
 <p style = "text-align = justify">
-No que se refere as stop words, todas as palavras que foram sendo identificadas do arquivo de entrada ao mesmo tempo se analisou se enquandrava no grupo das palavras que estavão no arquivo de entrada dentro do dataset que contem todas as stop words
+No que se refere as stop words, todas as palavras que foram sendo identificadas do arquivo de entrada ao mesmo tempo se analisou se tal palavra se enquandrava no grupo das palavras que estavão no arquivo de entrada dentro do dataset que contem todas as stop words, com isso foi se contando e identificando e armazenando tais palavras.
 </p>
 
 <p style = "text-align = justify">
+No texto de entrada toda palavra é separada por espaços, e todas as sentenças terminam com "." ou "!" ou "?". Para que fosse possível identificar o número de palavras por sentença foi utilizado desvios condicionais, para identificar onde se terminava ou iniciava uma palavra sendo eles um espaço vazio ou "." ou "\n" ou "!" ou "?", a cada vez que o ponteiro que percorria o arquivo de entrada.
+</p>
 
 
 ## Máquina de teste
@@ -119,7 +121,7 @@ No que se refere as stop words, todas as palavras que foram sendo identificadas 
             <td colspan="2">
                 <div>
                         <br>
-                        <p class="sizeText color">Computador Deedicado</p>
+                        <p class="sizeText color">Computador Dedicado</p>
                         <br>        
                 </div>
             </td>
