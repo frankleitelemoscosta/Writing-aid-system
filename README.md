@@ -33,7 +33,7 @@ Para construção de tal sistema foi necessário trazer alguns questionamentos e
 * Como identificar cada palavra listada em ordem alfabética com a frequência de sua ocorrência no
 texto, indicando as linhas do arquivo onde essas surgem?.
 * O que fazer caso uma palavra apareça mais de uma vez em um mesmo parágrafo, indicar a
-sua ocorrência e a distância entre elas incluindo as stop words?
+sua ocorrência e a distância entre elas incluindo as stop words?.
 
 3 - Como demonstrar a ocorrência de certas expressões sendo que para cada expressão deve ser indicado a
 linha no arquivo fonte onde aparece?
@@ -48,7 +48,7 @@ Usando essa forma de extração de dados é possível determinar o final de cada
 </p>
 
 <p style = "text-align = justify">
-Todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" ou "?", com isso sendo que esta sendo lido caracter por caracter assim que se chega com o ponteiro ao ponto onde se tem um desses caracteres foi contabilizado uma sentença a mais.
+Alem disso todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" ou "?", com isso sendo que esta sendo lido caracter por caracter se chega com o ponteiro ao ponto onde se tem um desses caracteres foi sendo contabilizado uma sentença a mais, e assim sucessivamente.
 </p>
 
 <p style = "text-align = justify">
@@ -59,6 +59,21 @@ No que se refere as stop words, todas as palavras que foram sendo identificadas 
 No texto de entrada toda palavra é separada por espaços, e todas as sentenças terminam com "." ou "!" ou "?". Para que fosse possível identificar o número de palavras por sentença foi utilizado desvios condicionais, para identificar onde se terminava ou iniciava uma palavra sendo eles um espaço vazio ou "." ou "\n" ou "!" ou "?", a cada vez que o ponteiro que percorria o arquivo de entrada.
 </p>
 
+<p style = "text-align = justify">
+para tal foi utilizado um mapa ordenado que funciona a com a lógica de uma função hash que já ordena as palavras em ordem alfabética, o mapa tem uma chave um valor associado a uma chave, sendo que a chave é a própria string extraida no arquivo de entrada, e o valor é uma struct a respeito daquela palavra, como paragrafo, linha em qual sentença ele apareceu, sendo o valor do map um set o qual é uma função dos arquivos internos do C++
+</p>
+
+<p style = "text-align = justify">
+dentro das informações contidas no map ou seja o valor associado a cada chave foi inserido em qual sentença a palavra estava e quantas vezes essa mesma palavra apareceu em uma mesma setença, alem da distancia entre elas, alem da posição dentro de uma sentença, e ainda se houver apenas uma ocorrência .
+</p>
+
+<p style = "text-align = justify">
+Durante o percurso no arquivo de entrada foi inserido um desvio condicional para averiguar letra por letra se as mesmas batem com algumas das palavras do arquivo de expressões, tendo correlação se seguia para as demais letras verificando a ocorrencia das letras seguintes.
+</p>
+
+<p style = "text-align = justify">
+Para todos os casos houve o uso de uma estrutura auxiliar denominada de set, sendo um set para guardar os dados do stop word, expresssões,e já, para o texto de entrada foi utilizado um map para o armazenamento e processamento de dados.
+</p>
 
 ## Máquina de teste
 
@@ -173,6 +188,8 @@ No texto de entrada toda palavra é separada por espaços, e todas as sentenças
 
 
 ## Conclusão
+
+<p style = "text-align = justify">
 Pode-se dizer que o código cumpriu com todos os objetivos propostos, tendo resultados satisfatórios alcançados como ler, processar e análisar, diversos dados associados a palavras contidas em um texto, com isso ao se observar a análise de resultados, vemos que os resultados apresentadados foram condizentes com os resultados esperados. Após a conclusão do código, calculamos uma média depois de 10 execuções em três computadores diferentes chegamos a COLOCAR TEMPO MEDIO como resultado de tempo médio. Também deve-se ressaltar outro fator crucial sendo ele a complexidade do algoritmo apresentado, tendo custo quadrático (O(n^2)), uma vez que a função de maior custo do programa é quadrática. Apartir desses dados, pode-se dizer que a decisção de retirar os dados da memória segundária para a memória principal todo o texto de uma vez ao invés de sequêncialmente se mostrou uma otmização relevante para evitar a velocidade mais lenta da memória segundária e minimizar as chamadas ao sistema operacional.
 
 Durante o processo de desenvolvimento, foram destacados possíveis pontos de melhora como o alinhamento da saída, algo que não influência diretamente no custo computacional e nem no tempo de execução do algorítmo, sendo afetasa apenas a estética da saída.(VOLTAR AQUI)
@@ -181,6 +198,8 @@ Durante o processo de desenvolvimento, foram destacados possíveis pontos de mel
 
 alinhamento
 Decisões que podem influenciar no algoritmo, 
+
+</p>
 
 ## Instruções para compilação
 
@@ -206,6 +225,9 @@ Este projeto contem um arquivo com um conjunto de diretivas de compilação que 
 </p>
 
 ## Referências
+<p style = "text-align = justify">
+CORMEN, Thomas H. Algoritmos: Teoria e Prática. 3. ed. Rio de Janeiro: Editora Elsevier, 2012.
+</p>
 
 ## Autores
 
