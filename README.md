@@ -171,6 +171,14 @@ No que se refere as stop words, todas as palavras que foram sendo identificadas 
 
 
 ## Conclusão
+Pode-se dizer que o código cumpriu com todos os objetivos propostos, tendo resultados satisfatórios alcançados como ler, processar e análisar, diversos dados associados a palavras contidas em um texto, com isso ao se observar a análise de resultados, vemos que os resultados apresentadados foram condizentes com os resultados esperados. Após a conclusão do código, calculamos uma média depois de 10 execuções em três computadores diferentes chegamos a COLOCAR TEMPO MEDIO como resultado de tempo médio. Também deve-se ressaltar outro fator crucial sendo ele a complexidade do algoritmo apresentado, tendo custo quadrático (O(n^2)), uma vez que a função de maior custo do programa é quadrática. Apartir desses dados, pode-se dizer que a decisção de retirar os dados da memória segundária para a memória principal todo o texto de uma vez ao invés de sequêncialmente se mostrou uma otmização relevante para evitar a velocidade mais lenta da memória segundária e minimizar as chamadas ao sistema operacional.
+
+Durante o processo de desenvolvimento, foram destacados possíveis pontos de melhora como o alinhamento da saída, algo que não influência diretamente no custo computacional e nem no tempo de execução do algorítmo, sendo afetasa apenas a estética da saída.(VOLTAR AQUI)
+
+
+
+alinhamento
+Decisões que podem influenciar no algoritmo, 
 
 ## Instruções para compilação
 
