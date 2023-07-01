@@ -200,5 +200,5 @@ Este projeto contem um arquivo com um conjunto de diretivas de compilação que 
 ## Autores
 
 <p style = "text-align = justify">
-Frank Leite Lemos Costa, Leandro Sousa Costa, João Pedro Freitas, Getúlio Santos Mendes alunos de Engenharia da Computação no <a href = "https://www.cefetmg.br/">CEFET</a>, 3° período.
+Frank Leite Lemos Costa, Leandro Sousa Costa, João Pedro Freitas, Getúlio Santos Mendes e Rafael Guimarães Gontijo. Alunos de Engenharia da Computação no <a href = "https://www.cefetmg.br/">CEFET</a>, 3° período.
 </p>
