@@ -37,37 +37,75 @@ void PartialMap::print(std::wofstream &output,
             L"--------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 
   for(auto it = this->mp.begin(); it != this->mp.end(); ++it) {
+    auto sentence = it->s.sentence.begin();
+    auto line = it->s.line.begin();
+    auto position = it->s.positions.begin();
+    auto distance = it->s.distances.begin();
+    bool loop, first = true;
+
     output << it->f
            << (it->f.length() < 8 ? L"\t\t\t\t" : it->f.length() < 16 ? L"\t\t\t" : it->f.length() < 24 ? L"\t\t" : L"\t")
            << paragraph << "\t\t\t";
 
-    space_sz = 0;
-    for(const auto &sentence : it->s.sentence) {
-      output << sentence << L' ';
-      space_sz += countDigits(sentence) + 1;
-    }
-    output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t");
+    do {
+      loop = false;
 
-    space_sz = 0;
-    for(const auto &line : it->s.line) {
-      output << line << L' ';
-      space_sz += countDigits(line) + 1;
-    }
-    output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t")
+      if(!first) output << L"\t\t\t\t\t\t\t";
 
-           << it->s.appearences << "\t\t\t";
+      space_sz = 0;
+      while(sentence != it->s.sentence.end()) {
+        output << *sentence << L' ';
+        space_sz += countDigits(*sentence) + 1;
+        ++sentence;
+        if(space_sz > 16 && sentence != it->s.sentence.end()) {
+          loop = true;
+          break;
+        }
+      }
+      output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t");
 
-    space_sz = 0;
-    for(const auto &position : it->s.positions) {
-      output << position << L' ';
-      space_sz += countDigits(position) + 1;
-    }
-    output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t");
+      space_sz = 0;
+      while(line != it->s.line.end()) {
+        output << *line << L' ';
+        space_sz += countDigits(*line) + 1;
+        ++line;
+        if(space_sz > 16 && line != it->s.line.end()) {
+          loop = true;
+          break;
+        }
+      }
+      output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t");
 
-    for(const auto &distance : it->s.distances) {
-      output << distance << L' ';
-    }
-    output << L'\n';
+      if(first) output << it->s.appearences;
+      output << "\t\t\t";
+
+      space_sz = 0;
+      while(position != it->s.positions.end()) {
+        output << *position << L' ';
+        space_sz += countDigits(*position) + 1;
+        ++position;
+        if(space_sz > 16 && position != it->s.positions.end()) {
+          loop = true;
+          break;
+        }
+      }
+      output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t");
+
+      space_sz = 0;
+      while(distance != it->s.distances.end()) {
+        output << *distance << L' ';
+        space_sz += countDigits(*distance) + 1;
+        ++distance;
+        if(space_sz > 16 && distance != it->s.distances.end()) {
+          loop = true;
+          break;
+        }
+      }
+
+      output << L'\n';
+
+      if(first) first = false;
+    } while(loop);
   }
   output << L"______________________________________________________________________________________________________________________________________________________________\n";
 }

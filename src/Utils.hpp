@@ -13,6 +13,8 @@
 #define _ ios_base::sync_with_stdio(0);cin.tie(0);
 #define endl '\n'
 #define dbg(x) cout << #x << " = " << x << endl;
+#define f first
+#define s second
 
 struct Count {
   unsigned short words;
@@ -30,7 +32,6 @@ struct ParagraphInfo {
 };
 
 struct Expression {
-  std::wstring str;
   unsigned short appearances;
   std::set<unsigned short> lines;
   Expression();
@@ -51,8 +52,8 @@ wchar_t *getText(const std::locale &loc);
 std::wofstream createOutput(const std::locale &loc);
 void printParagraph(const std::vector<ParagraphInfo> paragraph,
     std::wofstream &output);
-std::vector<Expression> readExpressions(const std::locale &loc);
-void printExpressions(const std::vector<Expression> expressions, std::wofstream &output);
+void readExpressions(std::map<std::wstring, Expression> &expressions, const std::locale &loc);
+void printExpressions(const std::map<std::wstring, Expression> expressions, std::wofstream &output);
 void printSentences(std::vector<Sentence> sentences, std::wofstream &output);
 
 #endif /* __UTILS_HPP__ */

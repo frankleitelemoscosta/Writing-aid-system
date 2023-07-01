@@ -53,7 +53,10 @@ wchar_t *getText(const std::locale &loc)
 {
   wifstream txt("./dataset/input.data", ios::binary);
 
-  if (!txt.is_open()) exit(1);
+  if(!txt.is_open()) {
+    wcout << L"Não foi possível abrir o arquivo \"./dataset/input.data\"" << endl;
+    exit(1);
+  }
 
   // Set the locale to handle UTF-8 encoding
   txt.imbue(loc);
@@ -77,9 +80,12 @@ wchar_t *getText(const std::locale &loc)
 
 std::wofstream createOutput(const std::locale &loc)
 {
-  wofstream output("./dataset/resultados.txt");
+  wofstream output("./dataset/output.data");
 
-  if (!output.is_open()) exit(1);
+  if(!output.is_open()) {
+    wcout << L"Não foi possível abrir o arquivo \"./dataset/output.data\"" << endl;
+    exit(1);
+  }
 
   output.imbue(loc);
 
@@ -104,32 +110,32 @@ void printParagraph(const std::vector<ParagraphInfo> paragraph,
          << endl;
 }
 
-std::vector<Expression> readExpressions(const std::locale &loc)
+void readExpressions(std::map<std::wstring, Expression> &expressions, const std::locale &loc)
 {
   wifstream input("./dataset/expressoes.txt");
 
-  if(!input.is_open()) exit(1);
+  if(!input.is_open()) {
+    wcout << L"Não foi possível abrir o arquivo \"./dataset/expressoes.txt\"" << endl;
+    exit(1);
+  }
 
   input.imbue(loc);
 
-  vector<Expression> expressions;
-  Expression exp;
+  wstring exp;
   wchar_t ch;
 
   while(input.get(ch)) {
     if(ch != L'\n') {
-      exp.str += tolower(ch);
-    } else if(!exp.str.empty()) {
-      expressions.push_back(exp);
-      exp.str.clear();
+      exp += tolower(ch);
+    } else if(!exp.empty()) {
+      expressions[exp].appearances = 0;
+      exp.clear();
     }
   }
 
-  //for(auto &ex : expressions) wcout << ex.str << endl; // rascunho
+  //for(auto &ex : expressions) wcout << ex.f << endl; // rascunho
 
   input.close();
-
-  return expressions;
 }
 
 static inline unsigned short countDigits(unsigned short num)
@@ -141,31 +147,52 @@ static inline unsigned short countDigits(unsigned short num)
          5;
 }
 
-void printExpressions(const std::vector<Expression> expressions, std::wofstream &output)
+void printExpressions(const std::map<std::wstring, Expression> expressions, std::wofstream &output)
 {
   output << L"_______________________________________________________________________________________________________________________________________\n"
             L"EXPRESSION 								      LINE 		   APPEARANCES\n"
             L"---------------------------------------------------------------------------------------------------------------------------------------\n";
 
-  for(const auto &exp : expressions) {
-    if(exp.appearances == 0) continue;
+  for(auto exp = expressions.begin(); exp != expressions.end(); exp++) {
+    if(exp->s.appearances == 0) continue;
 
-    unsigned short space_sz = 0;
-
-    output << exp.str
-           << (exp.str.length() < 8 ? L"\t\t\t\t\t\t\t\t\t\t" :
-               exp.str.length() < 16 ? L"\t\t\t\t\t\t\t\t\t" :
-               exp.str.length() < 24 ? L"\t\t\t\t\t\t\t\t" :
-               exp.str.length() < 32 ? L"\t\t\t\t\t\t\t" :
+    output << exp->f
+           << (exp->f.length() < 8 ? L"\t\t\t\t\t\t\t\t\t\t" :
+               exp->f.length() < 16 ? L"\t\t\t\t\t\t\t\t\t" :
+               exp->f.length() < 24 ? L"\t\t\t\t\t\t\t\t" :
+               exp->f.length() < 32 ? L"\t\t\t\t\t\t\t" :
                L"\t");
 
-    for(const auto &line : exp.lines) {
-      output << line << ' ';
-      space_sz += countDigits(line) + 1;
-    }
-    output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t")
+    auto line = exp->s.lines.begin();
+    unsigned short space_sz;
+    bool first = true, loop;
 
-           << exp.appearances << endl;
+    do {
+      space_sz = 0;
+      loop = false;
+
+      //output << L"começando" << endl;
+      if(!first) output << L"\t\t\t\t\t\t\t\t\t\t";
+
+      while(line != exp->s.lines.end()) {
+        output << *line << L' ';
+        space_sz += countDigits(*line) + 1;
+        ++line;
+        if(space_sz > 8 && line != exp->s.lines.end()) {
+          loop = true;
+          break;
+        }
+      }
+
+      if(first) {
+        output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t")
+               << exp->s.appearances;
+        first = false;
+      }
+
+      output << L'\n';
+    } while(loop);
+
   }
 
   output << L"---------------------------------------------------------------------------------------------------------------------------------------\n"

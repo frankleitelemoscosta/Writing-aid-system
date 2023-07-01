@@ -3,10 +3,13 @@
 #include "PartialMap.hpp"
 #include "TotalMap.hpp"
 
+#include <chrono>
+
 using namespace std;
 
 int main()
 {
+  clock_t start, end;
   setlocale(LC_ALL, "pt_BR.UTF-8");
   locale loc(locale(), new codecvt_utf8<wchar_t>);
 
@@ -20,7 +23,7 @@ int main()
   PartialMap mp_partial;
   TotalMap mp_total;
   vector<ParagraphInfo> paragraph;
-  vector<Expression> expressions = readExpressions(loc);
+  map<wstring, Expression> expressions;
   vector<Sentence> sentences;
   ParagraphInfo tmp_paragraph;
   Sentence sent;
@@ -29,6 +32,9 @@ int main()
   tmp_paragraph.number = 1;
   tmp_paragraph.beginAtLine = 1;
 
+  start = clock();
+
+  readExpressions(expressions, loc);
   printStart(output);
 
   while (*ch) {
@@ -45,8 +51,10 @@ int main()
           word.clear();
         }
 
-        mp_partial.print(output, text.paragraph);
-        count.print(output);
+        if(mp_partial.mp.size()) {
+          mp_partial.print(output, text.paragraph);
+          count.print(output);
+        }
         mp_partial.mp.clear();
 
         sentences.push_back(Sentence(text.paragraph, text.sentence,
@@ -57,7 +65,6 @@ int main()
         text.positions = 1;
         if(new_line) new_line = false;
         ++text.sentence;
-        //cout << text.sentence << endl; // rascunho
         break;
 
       case L'\n':
@@ -66,7 +73,6 @@ int main()
           if(stop_words.isStopWord(word)) {
             ++count.stop_words;
           } else {
-            //cout << text.positions << endl; // rascunho
             mp_partial.addWord(word, text);
             mp_total.addWord(word, text);
           }
@@ -77,7 +83,6 @@ int main()
         ++text.line;
 
         if(new_line) {
-          //cout << text.line << endl; // rascunho
           tmp_paragraph.sentences = text.sentence - 1;
           paragraph.push_back(tmp_paragraph);
           tmp_paragraph.beginAtLine = text.line;
@@ -91,6 +96,7 @@ int main()
 
       case L' ': case L',': case L':':
       case L';': case L'(': case L')':
+      case L'"': case L'-': case L'/':
         if(!word.empty()) {
           ++count.words;
           if(stop_words.isStopWord(word)) {
@@ -108,22 +114,18 @@ int main()
 
       default:
         if(word.empty()) {
-          //wcout << *ch << ':' << endl; // rascunho
           size_t i;
 
           for(auto &exp : expressions) {
             ptr = ch;
             
-            for(i = 0; exp.str[i] != '\0'; i++) {
-              //wcout << exp.str[i] << " != " << ptr[i] << endl; // rascunho
-              if(exp.str[i] != tolower(ptr[i])) break;
+            for(i = 0; exp.f[i] != '\0'; i++) {
+              if(exp.f[i] != tolower(ptr[i])) break;
             }
 
-            if(i == exp.str.length() && !isalpha(ptr[i])) {
-              ++exp.appearances;
-              exp.lines.insert(text.line);
-              //wcout << L"A expressão " << exp.str
-              //      << L" existe no texto!" << endl;
+            if(i == exp.f.length() && !isalpha(ptr[i])) {
+              ++exp.s.appearances;
+              exp.s.lines.insert(text.line);
             }
           }
         }
@@ -140,6 +142,10 @@ int main()
   printSentences(sentences, output);
   printParagraph(paragraph, output);
   printExpressions(expressions, output);
+
+  end = clock();
+  printf("Tempo de execução : %.3f ms\n",
+      ((double)(end - start))/CLOCKS_PER_SEC*1000);
 
   output.close();
   delete[] txt;
