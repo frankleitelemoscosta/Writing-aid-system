@@ -3,8 +3,13 @@
 
 #include "PartialMap.hpp"
 
-struct TotalData : PartialData {
+struct TotalData {
   std::set<unsigned short> paragraph;
+  std::set<unsigned short> sentence;
+  std::set<unsigned short> line;
+  unsigned short appearences;
+  std::set<unsigned short> positions;
+  TotalData();
 };
 
 struct TotalMap {

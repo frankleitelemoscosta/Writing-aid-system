@@ -1,7 +1,6 @@
 #ifndef __PARTIAL_MAP_HPP__
 #define __PARTIAL_MAP_HPP__
 
-#include <iomanip>
 #include <map>
 #include <string>
 #include <set>
@@ -15,6 +14,7 @@ struct PartialData {
   std::set<unsigned short> line;
   unsigned short appearences;
   std::set<unsigned short> positions;
+  std::set<unsigned short> distances;
   PartialData();
 };
 

@@ -114,6 +114,61 @@ No que se refere as stop words, todas as palavras que foram sendo identificadas 
         </tr>
     </table>
 
+<table style="width: 100%;" border="1">
+        <tr align="center" >
+            <td colspan="2">
+                <div>
+                        <br>
+                        <p class="sizeText color">Computador Deedicado</p>
+                        <br>        
+                </div>
+            </td>
+        <tr>
+        <tr align="center">
+            <td>
+               <div>
+                    <br>
+                    <p class="sizeText color">RAM</p>
+                    <br>
+               </div> 
+            </td>
+            <td >
+                <br>
+                    <p class="sizeText color">8Gb DDR3</p>
+                <br>
+            </td>
+        </tr>
+        <tr align="center">
+            <td style="width: 20%;">
+                <p class="sizeText color">
+                    <br>
+                    <p class="sizeText color">SO</p>
+                    <br>
+                </p>
+            </td>
+            <td >
+                <br>
+                    <p class="sizeText color">Linux Debian v11(bullseye), 64bits</p>
+                <br>
+            </td>
+        </tr>
+        <tr align="center">
+            <td style="width: 20%;">
+                <br>
+                    <p class="sizeText color">    
+                        CPU
+                    </p>
+                <br>
+            </td>
+            <td >
+                <br>
+                    <p class="sizeText color">AMD Athlon 5150 APU with Radeon R3 1,60GHz</p>
+                <br>
+            </td>
+        </tr>
+    </table>
+
+
 
 ## Conclusão
 

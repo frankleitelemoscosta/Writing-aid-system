@@ -1,6 +1,4 @@
 #include "Utils.hpp"
-#include "TotalMap.hpp"
-#include "Expression.hpp"
 
 using namespace std;
 
@@ -11,7 +9,7 @@ void Count::print(std::wofstream &output)
   output << L"=> Number of words with stop words: " << this->words
          << L"                                                       "
             L"=> Number of words without stop words: " << this->words - this->stop_words
-         << L"\n---------------------------------------------------------------------------------------------------------------------------------------\n"
+         << L"\n--------------------------------------------------------------------------------------------------------------------------------------------------------------\n"
          << endl;
 }
 
@@ -29,6 +27,16 @@ void ParagraphInfo::print(std::wofstream &output)
          << endl;
 }
 
+Expression::Expression() : appearances(0) {}
+
+Sentence::Sentence() : paragraph(0), sentence(0),
+                       n_of_words(0), n_of_stop_words(0) {}
+
+Sentence::Sentence(unsigned short paragraph, unsigned short sentence,
+                   unsigned short n_of_words, unsigned short n_of_stop_words)
+                 : paragraph(paragraph), sentence(sentence),
+                   n_of_words(n_of_words), n_of_stop_words(n_of_stop_words) {}
+
 void printStart(std::wofstream &output)
 {
 	output << L"======================================================================================================================================\n"
@@ -43,7 +51,7 @@ void printStart(std::wofstream &output)
 
 wchar_t *getText(const std::locale &loc)
 {
-  wifstream txt("./dataset/input.data", ios::binary);
+  wifstream txt("./dataset/entrada.txt", ios::binary);
 
   if (!txt.is_open()) exit(1);
 
@@ -75,44 +83,8 @@ std::wofstream createOutput(const std::locale &loc)
 
   output.imbue(loc);
 
-  //return the file output opened
   return output;
 }
-
-void ReadExpressionfile(TotalMap &tm, std::wofstream &output)
-{
-
-  FILE *file;
-  char word_aux[100];
-  string s;
-
-  file = fopen("dataset/expressoes.txt","r");
-
-  if(file == NULL)
-  {
-    cout << "don´t was possible open the file"<<endl;
-    exit(1);
-  }
-  output << L"\t\t\taee";
-
-  while(!feof(file))
-  {
-    fgets(word_aux, sizeof(word_aux), file);
-  
-    s = string(word_aux);
-
-    CheckExpression(s,tm);
-    s.clear();
-
-    cout << word_aux <<endl;
-  }
-
-  fclose(file);
-
-  return;
-
-}
-
 
 void printParagraph(const std::vector<ParagraphInfo> paragraph,
     std::wofstream &output)
@@ -130,4 +102,91 @@ void printParagraph(const std::vector<ParagraphInfo> paragraph,
   }
   output << "_______________________________________________________________________________________________________________________________________\n"
          << endl;
+}
+
+std::vector<Expression> readExpressions(const std::locale &loc)
+{
+  wifstream input("./dataset/expressoes.txt");
+
+  if(!input.is_open()) exit(1);
+
+  input.imbue(loc);
+
+  vector<Expression> expressions;
+  Expression exp;
+  wchar_t ch;
+
+  while(input.get(ch)) {
+    if(ch != L'\n') {
+      exp.str += tolower(ch);
+    } else if(!exp.str.empty()) {
+      expressions.push_back(exp);
+      exp.str.clear();
+    }
+  }
+
+  //for(auto &ex : expressions) wcout << ex.str << endl; // rascunho
+
+  input.close();
+
+  return expressions;
+}
+
+static inline unsigned short countDigits(unsigned short num)
+{
+  return num < 10 ? 1 :
+         num < 100 ? 2 :
+         num < 1000 ? 3 :
+         num < 10000 ? 4 :
+         5;
+}
+
+void printExpressions(const std::vector<Expression> expressions, std::wofstream &output)
+{
+  output << L"_______________________________________________________________________________________________________________________________________\n"
+            L"EXPRESSION 								      LINE 		   APPEARANCES\n"
+            L"---------------------------------------------------------------------------------------------------------------------------------------\n";
+
+  for(const auto &exp : expressions) {
+    if(exp.appearances == 0) continue;
+
+    unsigned short space_sz = 0;
+
+    output << exp.str
+           << (exp.str.length() < 8 ? L"\t\t\t\t\t\t\t\t\t\t" :
+               exp.str.length() < 16 ? L"\t\t\t\t\t\t\t\t\t" :
+               exp.str.length() < 24 ? L"\t\t\t\t\t\t\t\t" :
+               exp.str.length() < 32 ? L"\t\t\t\t\t\t\t" :
+               L"\t");
+
+    for(const auto &line : exp.lines) {
+      output << line << ' ';
+      space_sz += countDigits(line) + 1;
+    }
+    output << (space_sz < 8 ? L"\t\t\t" : space_sz < 16 ? L"\t\t" : L"\t")
+
+           << exp.appearances << endl;
+  }
+
+  output << L"---------------------------------------------------------------------------------------------------------------------------------------\n"
+            L"======================================================================================================================================\n"
+            L"=>                                                    ### END PROCESS ###\n"
+            L"======================================================================================================================================\n";
+}
+
+void printSentences(std::vector<Sentence> sentences, std::wofstream &output)
+{
+  output << L"_______________________________________________________________________________________________________________________________________\n"
+            L"                                       NUMBER OF WORDS IN EACH SENTENCE WITH AND WITHOUT STOP WORDS\n"
+            L"_______________________________________________________________________________________________________________________________________\n";
+
+  for(const auto &sent : sentences) {
+    output << L"Paragraph: " << sent.paragraph
+           << L"\tSentence: " << sent.sentence
+           << L"\tNumber of words with stop words: " << sent.n_of_words
+           << L"\tNumber of words without stop words: " << sent.n_of_words - sent.n_of_stop_words
+           << endl;
+  }
+
+  output << L"_______________________________________________________________________________________________________________________________________\n\n";
 }
