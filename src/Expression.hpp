@@ -4,31 +4,15 @@
 #include "TotalMap.hpp"
 #include <string>
 #include <vector>
+#include<iostream>
 
 using namespace std;
 
-typedef struct word {
-    short int par;
-    short int sen;
-    short int pos;
+typedef struct Expression{
+    string expressoes[100];
+    int Size;
+}Expression;
 
-    word(short int par, short int sen, short int pos){
-        this->par = par;
-        this->sen = sen;
-        this->pos = pos;
-    }
-} Word;
-
-typedef struct sentence{
-    short int par;
-    short int sen;
-
-    sentence(short int par, short int sen){
-        this->par = par;
-        this->sen = sen;
-    }
-} Sentence;
-
-short int CheckExpression(wstring word, wstring prevWord,TotalMap &tm, vector<Sentence> &locations);
+void CheckExpression(string s,TotalMap &tm);
 
 #endif

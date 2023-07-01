@@ -79,75 +79,38 @@ std::wofstream createOutput(const std::locale &loc)
   return output;
 }
 
-void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &output)
+void ReadExpressionfile(TotalMap &tm, std::wofstream &output)
 {
 
-  wstring word;
-  wstring prevWord;
-  bool sequence;
-  short int line, count = 0;
+  FILE *file;
+  char word_aux[100];
+  string s;
 
-  wifstream txt("./dataset/expressoes.txt", ios::binary);
+  file = fopen("dataset/expressoes.txt","r");
 
-  if(!txt.is_open()) exit(1);
-
-  txt.imbue(loc);
-
-  // Determine the size of the file in bytes
-  txt.seekg(0, ios::end);
-  streampos fileSize = txt.tellg();
-  txt.seekg(0, ios::beg);
-
-  // Allocate memory for the wchar_t buffer
-  wchar_t* buffer = new wchar_t[fileSize];
-
-  // Read the file contents into the buffer
-  txt.read(buffer, fileSize);
-
-<<<<<<< HEAD
-  wstring word;
-  wstring prevWord;
-  prevWord.clear();
-  short int sequence;
-  short int line = 0;
-
-=======
->>>>>>> 96ba9c7 (Update)
-  output << "EXPRESSIONS\t\t\t LINE \t\t\t APPERANCES\n";
-
-  while(*buffer)
+  if(file == NULL)
   {
-    sequence = 0;
-    vector<Sentence> locations;
+    cout << "don´t was possible open the file"<<endl;
+    exit(1);
+  }
+  output << L"\t\t\taee";
 
-    while(*buffer != L'\n' && *buffer != EOF){
-      if(*buffer == L' '){
-      
-        sequence = CheckExpression(word,prevWord,tm,locations);
+  while(!feof(file))
+  {
+    fgets(word_aux, sizeof(word_aux), file);
+  
+    s = string(word_aux);
 
-        prevWord = word;
-        word.clear();
-      }
+    CheckExpression(s,tm);
+    s.clear();
 
-      word += *buffer;
-      buffer++;
-
-      //cout << *buffer << endl;
-      //wcout << word <<endl;
-
-    }
-
-    if(sequence > 0 ){
-      output << line << "\t\t\t" << sequence << "\n";
-    }
-    locations.clear();
-
-    line++;
-    buffer++;
+    cout << word_aux <<endl;
   }
 
+  fclose(file);
 
-  txt.close();
+  return;
+
 }
 
 

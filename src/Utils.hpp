@@ -36,6 +36,6 @@ std::wofstream createOutput(const std::locale &loc);
 void printParagraph(const std::vector<ParagraphInfo> paragraph,
     std::wofstream &output);
 
-void ReadExpressionfile(const std::locale &loc, TotalMap &tm, std::wofstream &output);
+void ReadExpressionfile(TotalMap &tm, std::wofstream &output);
 
 #endif /* __UTILS_HPP__ */

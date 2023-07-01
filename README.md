@@ -39,13 +39,24 @@ sua ocorrência e a distância entre elas incluindo as stop words?
 linha no arquivo fonte onde aparece?
 
 <p style = "text-align = justify">
-A principio é necessário extrair os dados do arquivo de entrada e inseri-los na memória do computador para que se torne possível
+A principio é necessário extrair os dados do arquivo de entrada e inseri-los na memória do computador, para que se torne possível
 manipular tais dados com o propósito de conseguir as informações requiridas para auxiliar na correção de um texto, para tal foi utilizado o modo de leitura binário assim lendo caracter por caracter do arquivo de entrada, assim foi possível averiguar onde se esta no texto, se esta entre duas palavras ou no final da frase o que é essencial para a análise do texto. 
 </p>
 
-<p style = "text-align = justify"
-Assim para encontrar
+<p style = "text-align = justify">
+Usando essa forma de extração de dados é possível determinar o final de cada linha dentro do arquivo, já que cada linha é terminada com um "/n" basta contar as linhas a partir de quando o ponteiro usado para percorrer cada caracter do arquivo de entrada estiver lendo o "\n".
 </p>
+
+<p style = "text-align = justify">
+Todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" ou "?", com isso sendo que esta sendo lido caracter por caracter assim que se chega com o ponteiro ao ponto onde se tem um desses caracteres foi contabilizado uma sentença a mais.
+</p>
+
+<p style = "text-align = justify">
+No que se refere as stop words, todas as palavras que foram sendo identificadas ao mesmo tempo se analisou se enquandrava no grupo das palavras que estavão no arquivo de entrada dentro do dataset que contem todas as stop words
+</p>
+
+<p style = "text-align = justify">
+
 
 ## Máquina de teste
 

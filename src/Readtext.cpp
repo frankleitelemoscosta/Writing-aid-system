@@ -1,13 +1,6 @@
 #include"Readtext.hpp"
-#include "Utils.hpp"
-#include "StopWords.hpp"
-#include "PartialMap.hpp"
-#include "TotalMap.hpp"
 #include "Expression.hpp"
-#include<vector>
-#include<iostream>
 
-using namespace std;
 
 void Read()
 {
@@ -130,9 +123,11 @@ void Read()
   printParagraph(paragraph, output);
 
   //call a function that make the check the expression
-  ReadExpressionfile(loc,mp_total,output);
+  ReadExpressionfile(mp_total,output);
 
   output.close();
   delete[] txt;
+
+  return;
 
 }
