@@ -51,7 +51,7 @@ void printStart(std::wofstream &output)
 
 wchar_t *getText(const std::locale &loc)
 {
-  wifstream txt("./dataset/entrada.txt", ios::binary);
+  wifstream txt("./dataset/input.data", ios::binary);
 
   if (!txt.is_open()) exit(1);
 
