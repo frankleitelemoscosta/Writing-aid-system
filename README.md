@@ -39,8 +39,8 @@ sua ocorrência e a distância entre elas incluindo as stop words?.
 linha no arquivo fonte onde aparece?
 
 <p style = "text-align = justify">
-A principio é necessário extrair os dados do arquivo de entrada e inseri-los na memória do computador, para que se torne possível
-manipular tais dados com o propósito de conseguir as informações requiridas para auxiliar na correção de um texto, para tal foi utilizado o modo de leitura binário assim lendo caracter por caracter do arquivo de entrada, assim foi possível averiguar onde se esta no texto, se esta entre duas palavras ou no final da frase o que é essencial para a análise do texto. 
+A principio é necessário extrair os dados do arquivo de entrada e inseri-los na memória volátil do computador, para que se torne possível
+manipular tais dados com o propósito de conseguir as informações requiridas para auxiliar na correção de um texto, para tal foi utilizado o modo de leitura binário assim lendo caracter por caracter do arquivo de entrada, com isso foi possível averiguar onde se esta no texto, se esta entre duas palavras ou no final da frase, o que é essencial para a análise do texto. 
 </p>
 
 <p style = "text-align = justify">
@@ -48,11 +48,11 @@ Usando essa forma de extração de dados é possível determinar o final de cada
 </p>
 
 <p style = "text-align = justify">
-Alem disso todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" ou "?", com isso sendo que esta sendo lido caracter por caracter se chega com o ponteiro ao ponto onde se tem um desses caracteres foi sendo contabilizado uma sentença a mais, e assim sucessivamente.
+Alem disso todas as sentenças do arquivo de entrada terão a terminação com "." ou "!" ou "?", com isso sendo que esta sendo lido caracter por caracter, no momento que se chega com o ponteiro ao ponto onde se tem um desses caracteres foi sendo contabilizado uma sentença a mais, e assim sucessivamente.
 </p>
 
 <p style = "text-align = justify">
-No que se refere as stop words, todas as palavras que foram sendo identificadas do arquivo de entrada ao mesmo tempo se analisou se tal palavra se enquandrava no grupo das palavras que estavão no arquivo de entrada dentro do dataset que contem todas as stop words, com isso foi se contando e identificando e armazenando tais palavras.
+No que se refere as stop words, todas as palavras que foram sendo identificadas do arquivo de entrada, ao mesmo tempo que se analisou demais ocorrencias como o fim de uma palavra qualquer, de uma sentença ou de um paragrafo, era averiguado se tal palavra se enquandrava no grupo das palavras que estavão no arquivo de stop words contido dentro do dataset que contem todas as stop words, com isso foi se contando e identificando e armazenando tais palavras.
 </p>
 
 <p style = "text-align = justify">
@@ -72,7 +72,7 @@ Durante o percurso no arquivo de entrada foi inserido um desvio condicional para
 </p>
 
 <p style = "text-align = justify">
-Para todos os casos houve o uso de uma estrutura auxiliar denominada de set, sendo um set para guardar os dados do stop word, expresssões,e já, para o texto de entrada foi utilizado um map para o armazenamento e processamento de dados.
+Para todos os casos houve o uso de uma estrutura auxiliar denominada de set, sendo um set para guardar os dados do stop word, outro para as expresssões. E para o texto de entrada foi utilizado um map para o armazenamento e processamento de dados.
 </p>
 
 # Análise de tempo de Execução e exemplo de entrada e saída
@@ -83,7 +83,7 @@ Foram feitos 10 testes em duas máquinas distintas o primeiro print mostra o tem
 <img src="./img/testenamaquinafrankinho.png" width = 80% alt="teste realizados com um i5">
 
 <p style = "text-align = justify">
-Este segundo teste foi realizado em uma máquina de um desempenho um pouco inferior, as especificações de configurações de ambas as máquinas foram destacadas, é possível observar que para mesma entrada tem se sete digitos no algarismo que representa o tempo na segunda máquina e na primeira temos apenas 6 dígitos, provando o quão expressivo é a diferença de tempo entre uma máquina de um processador arquitetado e construido em 2020 e outro construído em 2014 em apenas 6 anos o avanço de performace de hardware foi significativa, porem não se faz uma verdade absoluta tais argumentos visto que os dados aqui apresentados podem ser imprecisos devido a fatos como os processos concorrentes que estavam a ser executadas ao mesmo tempo que se executava o algoritmo e os sistemas operacionais serem distintos, apesar de serem ambos sistemas linux, ambos são versões distintas, sendo a versão ubuntu mais instavel que a versão debiam, veja o tempo do segundo teste na segunta máquina:
+Este segundo teste foi realizado em uma máquina de um desempenho um pouco inferior, as especificações de configurações de ambas as máquinas foram destacadas aqui neste projeto, é possível observar que para mesma entrada tem se sete digitos no algarismo que representa o tempo na segunda máquina e na primeira temos apenas 6 dígitos, provando o quão expressivo é a diferença de tempo entre uma máquina de um processador arquitetado e construido em 2020 e outro construído em 2014 em apenas 6 anos o avanço de performace de hardware foi significativa, porem não se faz uma verdade absoluta tais argumentos, visto que os dados aqui apresentados podem ser imprecisos, devido a fatos como os processos concorrentes que estavam a ser executadas ao mesmo tempo que se executava o algoritmo, e os sistemas operacionais serem distintos, apesar de serem ambos sistemas linux ambos são versões distintas, sendo a versão ubuntu mais instavel que a versão debiam, veja o tempo do segundo teste na segunta máquina:
 </p>
 
 <img src="./img/testemaquinarafael.png" width = 100% alt="testes com processador amd atlhon">
@@ -203,9 +203,9 @@ Este segundo teste foi realizado em uma máquina de um desempenho um pouco infer
 ## Conclusão
 
 <p style = "text-align = justify">
-Pode-se dizer que o código cumpriu com todos os objetivos propostos, tendo resultados satisfatórios alcançados como ler, processar e análisar, diversos dados associados a palavras contidas em um texto, com isso ao se observar a análise de resultados, vemos que os resultados apresentadados foram condizentes com os resultados esperados. Após a conclusão do código, calculamos uma média depois de 10 execuções em três computadores diferentes chegamos a COLOCAR TEMPO MEDIO 341396,8 MICROSSEGUNDOS na primeira máquina, 1305626,3 na segunda máquina como resultado de tempo médio. Também deve-se ressaltar outro fator crucial sendo ele a complexidade do algoritmo apresentado, tendo custo quadrático (O(n^2)), uma vez que a função de maior custo do programa é quadrática. Tal metrica embasada na quantidade de operações realizadas com a entrada se faz mais realista e generalista que é o objetivo deste trabalho, pois como dito por <a href="https://kupdf.net/download/projeto-de-algoritmos-com-implementa-ccedil-otilde-es-em-java-e-c-nivio-ziviani_5b0c78cce2b6f5a878171c61_pdf">Nivio Ziviane em seu livro Projeto de Algoritmos</a> onde ele argumenta possibilidades como o fato de arquiteturas distintas apresentarem performaces distintas podem mascarar uma comparação mais correlata e condizente, apesar de ser o mesmo código pode haver distinção no tempo com relação ao tamanho da entrada de dados, em casos onde a mesma se faz grande como neste projeto pode haver conflitos de armazenamento de informações com o sistema operacional que trabalha para manter seus processos ao mesmo tempo que o código é executado podendo atrasar, perder ou impossibilitar a execução do código.  Apartir desses dados, pode-se dizer que a decisção de retirar os dados da memória segundária para a memória principal todo o texto de uma vez ao invés de sequêncialmente se mostrou uma otmização relevante para evitar a velocidade mais lenta da memória segundária e minimizar as chamadas ao sistema operacional, alem de outros evitar outros problemas.
+Pode-se dizer que o código cumpriu com todos os objetivos propostos, tendo resultados satisfatórios alcançados como ler, processar e análisar, diversos dados associados a palavras contidas em um texto, com isso ao se observar a análise de resultados, vemos que os resultados apresentadados foram condizentes com os resultados esperados. Após a conclusão do código, calculamos uma média depois de 10 execuções em dois computadores diferentes chegamos a 341396,8 microssegundos na primeira máquina, 1305626,3 microssegundos na segunda máquina como resultado de tempo médio. Também deve-se ressaltar outro fator crucial sendo ele a complexidade do algoritmo apresentado, tendo custo quadrático (O(n^2)), uma vez que a função de maior custo do programa é quadrática. Tal metrica embasada na quantidade de operações realizadas com a entrada se faz mais realista e generalista, que é o objetivo deste trabalho, pois como dito por <a href="https://kupdf.net/download/projeto-de-algoritmos-com-implementa-ccedil-otilde-es-em-java-e-c-nivio-ziviani_5b0c78cce2b6f5a878171c61_pdf">Nivio Ziviane em seu livro Projeto de Algoritmos</a> onde ele argumenta possibilidades como o fato de arquiteturas distintas apresentarem performaces distintas podem mascarar uma comparação mais correlata e condizente, apesar de ser o mesmo código pode haver distinção no tempo com relação ao tamanho da entrada de dados, em casos onde a mesma se faz grande como neste projeto pode haver conflitos de armazenamento de informações com o sistema operacional que trabalha para manter seus processos ao mesmo tempo que o código é executado podendo atrasar, perder ou impossibilitar a execução do código.  Apartir desses dados, pode-se dizer que a decisção de retirar os dados da memória segundária para a memória principal todo o texto de uma vez ao invés de sequêncialmente se mostrou uma otmização relevante para evitar a velocidade mais lenta da memória segundária e minimizar as chamadas ao sistema operacional, alem de outros evitar outros problemas.
 
-Durante o processo de desenvolvimento, foram destacados possíveis pontos de melhora como o alinhamento da saída, algo que não influência diretamente no custo computacional e nem no tempo de execução do algorítmo, sendo afetasa apenas a estética da saída.(VOLTAR AQUI)
+Durante o processo de desenvolvimento, foram destacados possíveis pontos de melhora como o alinhamento da saída, algo que não influência diretamente no custo computacional e nem no tempo de execução do algorítmo, sendo afetada apenas a estética da saída.(VOLTAR AQUI)
 
 
 
