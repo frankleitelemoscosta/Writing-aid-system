@@ -77,8 +77,15 @@ Alem disso todas as sentenças do arquivo de entrada terão a terminação com "
 </p>
 
 <p style = "text-align = justify">
-Além dos espaços, sinais de pontuação e new lines, outros caracteres não foram considerados como sendo parte das palavras. São eles: ':', ';', '(', ')', '"', '-' e '/'.
+Além dos espaços, sinais de pontuação e new lines, outros caracteres não foram considerados como sendo parte das palavras. São eles:
 </p>
+
+* `:`
+* `;`
+* `(`
+* `)`
+* `"`
+* `/`
 
 <p style = "text-align = justify">
 No que se refere as stop words, todas as palavras que foram sendo identificadas do arquivo de entrada, ao mesmo tempo que se analisou demais ocorrencias como o fim de uma palavra qualquer, de uma sentença ou de um paragrafo, era averiguado se tal palavra se enquandrava no grupo das palavras que estavão no arquivo de stop words contido dentro do dataset que contem todas as stop words, com isso foi se contando e identificando e armazenando tais palavras.
@@ -120,7 +127,11 @@ A fim de verificar se o tempo de execução está dentro do desejável, foram fe
 <img src="./img/testenamaquinafrankinho.png" width = 80% alt="teste realizados com um i5">
 
 <p style = "text-align = justify">
-Este segundo teste foi realizado em uma máquina de um desempenho um pouco inferior. As especificações de configurações de ambas as máquinas foram destacadas aqui neste projeto. É possível observar que, para a mesma entrada, tem se sete digitos no algarismo que representa o tempo na segunda máquina e na primeira temos apenas 6 dígitos, provando o quão expressivo é a diferença de tempo entre uma máquina de um processador arquitetado e construido em 2020 e outro construído em 2014. Em apenas 6 anos o avanço de performace de hardware foi significativa, porém, não se faz uma verdade absoluta tais argumentos, visto que os dados aqui apresentados podem ser imprecisos, devido a fatos como os processos concorrentes que estavam a ser executadas ao mesmo tempo que se executava o algoritmo, e os sistemas operacionais serem distintos, apesar de serem ambos sistemas linux ambos são versões distintas, sendo a versão ubuntu mais instável que a versão debiam. Veja o tempo do segundo teste na segunta máquina:
+Este segundo teste foi realizado em uma máquina de um desempenho um pouco inferior. As especificações de configurações de ambas as máquinas foram destacadas aqui neste projeto. É possível observar que, para a mesma entrada, tem se sete digitos no algarismo que representa o tempo na segunda máquina e na primeira temos apenas 6 dígitos, provando o quão expressivo é a diferença de tempo entre uma máquina de um processador arquitetado e construido em 2020 e outro construído em 2014.
+</p>
+
+<p style = "text-align = justify">
+Em apenas 6 anos o avanço de performace de hardware foi significativa, porém, não se faz uma verdade absoluta tais argumentos, visto que os dados aqui apresentados podem ser imprecisos, devido a fatos como os processos concorrentes que estavam a ser executadas ao mesmo tempo que se executava o algoritmo, e os sistemas operacionais serem distintos, apesar de serem ambos sistemas linux ambos são versões distintas, sendo a versão ubuntu mais instável que a versão debiam. Veja o tempo do segundo teste na segunta máquina:
 </p>
 
 <img src="./img/testemaquinarafael.png" width = 100% alt="testes com processador amd atlhon">
