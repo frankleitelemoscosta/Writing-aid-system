@@ -80,7 +80,7 @@ Para todos os casos houve o uso de uma estrutura auxiliar denominada de set, sen
 <p style = "text-align = justify">
 Foram feitos 10 testes em duas máquinas distintas o primeiro print mostra o tempo de execução na máquina mais performática
 </p>
-<img src="./img/testenamaquinafrankinho.png" width = 100% alt="imagem com dois números">
+<img src="./img/testenamaquinafrankinho.png" width = 80% alt="imagem com dois números">
 
 <p style = "text-align = justify">
 Este segundo teste foi realizado em uma máquina de um desempenho um pouco inferior, as especificações de configurações de ambas as máquinas foram destacadas, é possível observar que para mesma entrada tem se sete digitos no algarismo que representa o tempo na segunda máquina e na primeira temos apenas 6 dígitos, provando o quão expressivo é a diferença de tempo entre uma máquina de um processador arquitetado e construido em 2020 e outro construído em 2014 em apenas 6 anos o avanço de performace de hardware foi significativa, porem não se faz uma verdade absoluta tais argumentos visto que os dados aqui apresentados podem ser imprecisos devido a fatos como os processos concorrentes que estavam a ser executadas ao mesmo tempo que se executava o algoritmo e os sistemas operacionais serem distintos, apesar de serem ambos sistemas linux, ambos são versões distintas, sendo a versão ubuntu mais instavel que a versão debiam, veja o tempo do segundo teste na segunta máquina:
@@ -203,7 +203,7 @@ Este segundo teste foi realizado em uma máquina de um desempenho um pouco infer
 ## Conclusão
 
 <p style = "text-align = justify">
-Pode-se dizer que o código cumpriu com todos os objetivos propostos, tendo resultados satisfatórios alcançados como ler, processar e análisar, diversos dados associados a palavras contidas em um texto, com isso ao se observar a análise de resultados, vemos que os resultados apresentadados foram condizentes com os resultados esperados. Após a conclusão do código, calculamos uma média depois de 10 execuções em três computadores diferentes chegamos a COLOCAR TEMPO MEDIO como resultado de tempo médio. Também deve-se ressaltar outro fator crucial sendo ele a complexidade do algoritmo apresentado, tendo custo quadrático (O(n^2)), uma vez que a função de maior custo do programa é quadrática. Apartir desses dados, pode-se dizer que a decisção de retirar os dados da memória segundária para a memória principal todo o texto de uma vez ao invés de sequêncialmente se mostrou uma otmização relevante para evitar a velocidade mais lenta da memória segundária e minimizar as chamadas ao sistema operacional.
+Pode-se dizer que o código cumpriu com todos os objetivos propostos, tendo resultados satisfatórios alcançados como ler, processar e análisar, diversos dados associados a palavras contidas em um texto, com isso ao se observar a análise de resultados, vemos que os resultados apresentadados foram condizentes com os resultados esperados. Após a conclusão do código, calculamos uma média depois de 10 execuções em três computadores diferentes chegamos a COLOCAR TEMPO MEDIO como resultado de tempo médio. Também deve-se ressaltar outro fator crucial sendo ele a complexidade do algoritmo apresentado, tendo custo quadrático (O(n^2)), uma vez que a função de maior custo do programa é quadrática. Tal metrica embasada na quantidade de operações realizadas com a entrada se faz mais realista e generalista que é o objetivo deste trabalho, pois como dito por <a href="https://kupdf.net/download/projeto-de-algoritmos-com-implementa-ccedil-otilde-es-em-java-e-c-nivio-ziviani_5b0c78cce2b6f5a878171c61_pdf">Nivio Ziviane em seu livro Projeto de Algoritmos</a> onde ele argumenta possibilidades como o fato de arquiteturas distintas apresentarem performaces distintas podem mascarar uma comparação mais correlata e condizente, apesar de ser o mesmo código pode haver distinção no tempo com relação ao tamanho da entrada de dados, em casos onde a mesma se faz grande como neste projeto pode haver conflitos de armazenamento de informações com o sistema operacional que trabalha para manter seus processos ao mesmo tempo que o código é executado podendo atrasar, perder ou impossibilitar a execução do código.  Apartir desses dados, pode-se dizer que a decisção de retirar os dados da memória segundária para a memória principal todo o texto de uma vez ao invés de sequêncialmente se mostrou uma otmização relevante para evitar a velocidade mais lenta da memória segundária e minimizar as chamadas ao sistema operacional, alem de outros evitar outros problemas.
 
 Durante o processo de desenvolvimento, foram destacados possíveis pontos de melhora como o alinhamento da saída, algo que não influência diretamente no custo computacional e nem no tempo de execução do algorítmo, sendo afetasa apenas a estética da saída.(VOLTAR AQUI)
 
@@ -239,7 +239,8 @@ Este projeto contem um arquivo com um conjunto de diretivas de compilação que 
 
 ## Referências
 <p style = "text-align = justify">
-CORMEN, Thomas H. Algoritmos: Teoria e Prática. 3. ed. Rio de Janeiro: Editora Elsevier, 2012.
+CORMEN, Thomas H. Algoritmos: Teoria e Prática. 3. ed. Rio de Janeiro: Editora Elsevier, 2012.<br>
+N.Ziviane,Projeto de Algoritmos: com implementação em Java e C++,São Paulo,Thonson Learning,2007.
 </p>
 
 ## Autores
