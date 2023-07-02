@@ -144,8 +144,8 @@ int main()
   printExpressions(expressions, output);
 
   auto stop = chrono::high_resolution_clock::now();
-  auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-  wcout << duration.count() << " microsegundos" << endl;
+  auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
+  wcout << duration.count() << " ms" << endl;
 
   output.close();
   delete[] txt;
