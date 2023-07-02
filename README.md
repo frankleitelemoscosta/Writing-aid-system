@@ -75,6 +75,19 @@ Durante o percurso no arquivo de entrada foi inserido um desvio condicional para
 Para todos os casos houve o uso de uma estrutura auxiliar denominada de set, sendo um set para guardar os dados do stop word, expresssões,e já, para o texto de entrada foi utilizado um map para o armazenamento e processamento de dados.
 </p>
 
+# Análise de tempo de Execução e exemplo de entrada e saída
+
+<p style = "text-align = justify">
+Foram feitos 10 testes em duas máquinas distintas o primeiro print mostra o tempo de execução na máquina mais performática
+</p>
+<img src="./img/testenamaquinafrankinho.png" width = 100% alt="imagem com dois números">
+
+<p style = "text-align = justify">
+Este segundo teste foi realizado em uma máquina de um desempenho um pouco inferior, as especificações de configurações de ambas as máquinas foram destacadas, é possível observar que para mesma entrada tem se sete digitos no algarismo que representa o tempo na segunda máquina e na primeira temos apenas 6 dígitos, provando o quão expressivo é a diferença de tempo entre uma máquina de um processador arquitetado e construido em 2020 e outro construído em 2014 em apenas 6 anos o avanço de performace de hardware foi significativa, porem não se faz uma verdade absoluta tais argumentos visto que os dados aqui apresentados podem ser imprecisos devido a fatos como os processos concorrentes que estavam a ser executadas ao mesmo tempo que se executava o algoritmo e os sistemas operacionais serem distintos, apesar de serem ambos sistemas linux, ambos são versões distintas, sendo a versão ubuntu mais instavel que a versão debiam, veja o tempo do segundo teste na segunta máquina:
+</p>
+
+<img src="./img/testemaquinarafael.png" width = 100% alt="imagem com dois números">
+
 ## Máquina de teste
 
 <table style="width: 100%;" border="1">
